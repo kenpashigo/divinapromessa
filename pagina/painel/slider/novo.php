@@ -20,7 +20,7 @@
       
       
       <label for="img_up" class="btn-upload" id="btn-upload">Escolha a imagem</label>        
-      <input type="file" name="imagem" onchange="upload_slide();" id="img_up" />
+      <input type="file" name="imagem" onchange="upload_img('./sliders/');" id="img_up" />
 
       <div id="progress-data-send">
         <div id="loading"></div>      
@@ -49,4 +49,4 @@
 <div id="texto-form"><p>Legenda</p></div>
   <input type="text" name="legenda" class="form-input" placeholder="Legenda do slide" id="txt_legenda" />  
 
-<span id="enviar" onclick="addSlider_query();">Adicionar novo slider</span>
+<span id="enviar" onclick="addSlide();">Adicionar novo slider</span>

@@ -1,17 +1,18 @@
 <script type="text/javascript">
-  var pegaBody = null;
-  var lateralMenu = null;
+  var corpo = null;    
 
-  document.addEventListener("DOMContentLoaded", function(){
-    pegaBody    = document.body;
-    lateralMenu = document.getElementById('lateral-menu');      
+  document.addEventListener("DOMContentLoaded", function(){    
+    corpo = document.body;     
   });
 
   function abrir(){   
-    pegaBody.style  = "transform: translateX(-75%);";      
+    corpo.style  = "transform: translateX(-100%);";    
+    setTimeout(function() {
+      corpo.style  = "transform: translateX(-100%); position: fixed;";    
+    }, 310);
   }
 
   function fechar(){
-    pegaBody.style  = "transform: translateX(0%);";
+    corpo.style  = "transform: translateX(0%); position: inherit";
   }
 </script>

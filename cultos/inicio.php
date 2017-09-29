@@ -1,7 +1,6 @@
 <?php         
-  $link   = DBConnect();
-  $query  = "SELECT * FROM dp_cultos WHERE pin > 0 ORDER BY pin ASC LIMIT 3";
-  $result = mysqli_query($link, $query);
+  
+  $result  = $conn->DBQuery("SELECT * FROM dp_cultos WHERE pin > 0 ORDER BY pin ASC LIMIT 3");  
   if($result != null) { $rows = mysqli_num_rows($result); } else {  }
 
   if($rows > 0) {
@@ -11,10 +10,10 @@
       $titulo = $row['titulo'];
       $imagem = $row['imagem'];
 
-      echo '<div id="news">
+      echo '<div id="news">              
               <h2>'.$pregador.'</h2>
               <span>'.$titulo.'</span>
-              <img src="'.$imagem.'" alt="">
+              <img src="'.HTTP.'uploads/cultos/'.$imagem.'" alt="">
             </div>';
     }
   } 
@@ -33,16 +32,18 @@
 
 <?php 
 
+  $row    = 0;
+  $result = 0;
+
   if(isset($_GET['pagina'])){
     $pagina = $_GET['pagina'];    
   } else {
     $pagina = 0;
   }
   
-  $query = "SELECT * FROM dp_cultos ORDER BY id DESC";  
-  $select = mysqli_query($link, $query);
+  $select = $conn->DBQuery("SELECT * FROM dp_cultos WHERE pin < 1 ORDER BY id DESC");    
   $row = mysqli_num_rows($select);
-
+  
   if($row < 1) {
     
   } else {
@@ -56,15 +57,13 @@
 ?>
 
 <div id="cultos-holder">
-  <div id="culto-post" style="background: linear-gradient(transparent, #222), url('./img/pregadores/<?=$img?>.jpg'); background-size: cover; background-repeat: no-repeat; background-position: center;">
+  <div id="culto-post" style="background: linear-gradient(transparent, #222), url('./uploads/cultos/<?=$row['imagem']?>'); background-size: cover; background-repeat: no-repeat; background-position: center;">
     
     <a href="./cultos/post.php?post=<?php echo $id ?>"><div id="abso-back"></div></a>
 
     <div id="abso-img">    
       <a href="./cultos/post.php?post=<?php echo $id ?>"><img src="./ico/follow.png" alt="ouvir pregação" /></a>
     </div>
-
-
 
     <div class="culto-img" style="background: transparent;"></div>
 
@@ -90,8 +89,7 @@
       $ddd = date("d")-1; if($ddd<10){$ddd='0'.$ddd;}    
       $mmm = date("m");      
 
-      $query  = "SELECT * FROM dp_agenda WHERE mes = '$mmm' AND dia > '$ddd' ORDER BY mes ASC, dia ASC";    
-      $query = mysqli_query($link, $query);
+      $query = $conn->DBQuery("SELECT * FROM dp_agenda WHERE mes = '$mmm' AND dia > '$ddd' ORDER BY mes ASC, dia ASC LIMIT 2");          
       $qtde= mysqli_num_rows($query);    
 
       if($qtde > 0) {
@@ -118,8 +116,7 @@
         }    
       } else {    
         
-        $query = "SELECT * FROM dp_agenda WHERE mes > '$mmm' ORDER BY mes ASC, dia ASC LIMIT 1";
-        $query = mysqli_query($link, $query);
+        $query = $conn->DBQuery("SELECT * FROM dp_agenda WHERE mes > '$mmm' ORDER BY mes ASC, dia ASC LIMIT 2");        
         $result= mysqli_num_rows($query);
 
         while($result = mysqli_fetch_assoc($query)){

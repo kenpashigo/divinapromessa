@@ -2,6 +2,9 @@
   ob_start("ob_gzhandler");
   require './system/config.php';
   require './system/conn.php';  
+
+  $conn = new Connection();
+
 ?>
 
 <!DOCTYPE html>
@@ -29,11 +32,8 @@
   <section id="top3news">
     <div id="max-width-body" class="grid-top3news">
       <?php
-        if(isset($_GET['pagina'])){
-          $do = ($_GET['pagina']);
-        } else {
-          $do = "inicio";
-        }
+        
+        $do = $_GET['pagina'] ?? "inicio";        
 
         if(file_exists("ensinamentos/".$do.".php")){
           include("ensinamentos/".$do.".php");

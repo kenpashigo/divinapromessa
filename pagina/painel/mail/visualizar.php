@@ -18,12 +18,12 @@
   </tr>
 
 <?php 
-
-	$link    = DBConnect();
-	if($visualizar==0) { $query = "SELECT * FROM dp_contatos LIMIT 10"; } 
+	
+	if($visualizar==0) { $query = "SELECT * FROM dp_contatos ORDER BY id ASC LIMIT 10"; } 
 	else 							 { $query = "SELECT * FROM dp_contatos WHERE id = '$visualizar'"; } 
 
-	$retorno = mysqli_query($link, $query);
+	$conn 	 = new Connection();
+	$retorno = $conn->DBQuery($query);	
 	$rows    = mysqli_num_rows($retorno);
 
 	if($rows < 1) {
@@ -43,7 +43,7 @@
     <?php
     	if($visualizar == 0) {
     		echo '<td>
-    						<span onclick="getPage(`mail/visualizar&visualizar='.$row['id'].'`);" class="	glyphicon glyphicon-th-list" aria-hidden="true">
+    						<span onclick="getPage(`mail/visualizar`, '.$row['id'].');" class="	glyphicon glyphicon-th-list" aria-hidden="true">
     						</span>
     					</td>';
     	}
@@ -61,5 +61,3 @@
 	}
 
 ?>
-
-

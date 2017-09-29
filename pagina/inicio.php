@@ -1,6 +1,6 @@
 <?php          
-  $query  = "SELECT * FROM dp_posts WHERE pin > 0 ORDER BY pin ASC LIMIT 3";
-  $result = mysqli_query($link, $query);
+  
+  $result  = $conn->DBQuery("SELECT * FROM dp_posts WHERE pin > 0 ORDER BY pin ASC LIMIT 3");  
   $rows = mysqli_num_rows($result);      
 
   if($rows > 0) {
@@ -39,18 +39,12 @@
 
     <?php
 
-
-      if(isset($_GET['posts'])){
-        $pg = (int)$_GET['posts'];
-      } else {
-        $pg = 1;
-      }
+      $pg = $_GET['posts'] ?? 1;           
 
       $maximo = 10;
       $inicio = (($pg * $maximo) - $maximo);    
-      //
-      $query  = "SELECT * FROM dp_posts WHERE pin = 0 ORDER BY id DESC LIMIT $inicio, $maximo";  
-      $result = mysqli_query($link, $query);       
+      
+      $result  = $conn->DBQuery("SELECT * FROM dp_posts WHERE pin = 0 ORDER BY id DESC LIMIT $inicio, $maximo");
       $conta = mysqli_num_rows($result);
 
       if($conta <= 0) {
@@ -71,13 +65,13 @@
 
 
         <div id="posts-holder">
-          <a href="./pagina/post.php?post=<?php echo $id ?>"></a>          
+          <a href="./pagina/post.php?post=<?= $id ?>"></a>          
 
           <?php if(empty($imagem)){
             //Não exibe a div            
                 }else{
                   echo '<div class="news-img-holder">
-                          <img src="'.img_news($imagem).'" />
+                          <img src="'.$tools->img_news($imagem).'" />
                         </div>';
                 }
           ?>
@@ -89,15 +83,15 @@
             </div>
 
             <div id="post-categoria">
-              <p><?php echo $categoria ?> <span class="gray"> * HÁ <?php echo horas($data, $hora); ?></span></p>
+              <p><?= $categoria ?> <span class="gray"> * HÁ <?= $tools->horas($data, $hora); ?></span></p>
             </div>
 
             <div id="post-titulo">
-              <p><?php echo $titulo ?></p>
+              <p><?= $titulo ?></p>
             </div>
 
             <div id="post-resumo">
-              <p><?php echo $resumo ?></p>
+              <p><?= $resumo ?></p>
             </div>
           </div>
         </div>    
@@ -113,9 +107,8 @@
       date_default_timezone_set('America/Sao_Paulo');
       $ddd = date("d")-1; if($ddd<10){$ddd='0'.$ddd;}    
       $mmm = date("m");      
-
-      $query  = "SELECT * FROM dp_agenda WHERE mes = '$mmm' AND dia > '$ddd' ORDER BY mes ASC, dia ASC LIMIT 2";    
-      $query = mysqli_query($link, $query);
+      
+      $query = $conn->DBQuery("SELECT * FROM dp_agenda WHERE mes = '$mmm' AND dia > '$ddd' ORDER BY mes ASC, dia ASC LIMIT 2");
       $qtde= mysqli_num_rows($query);    
 
       if($qtde > 0) {
@@ -142,8 +135,7 @@
         }    
       } else {    
         
-        $query = "SELECT * FROM dp_agenda WHERE mes > '$mmm' ORDER BY mes ASC, dia ASC LIMIT 2";
-        $query = mysqli_query($link, $query);
+        $query = $conn->DBQuery("SELECT * FROM dp_agenda WHERE mes > '$mmm' ORDER BY mes ASC, dia ASC LIMIT 2");        
         $result= mysqli_num_rows($query);
 
         while($result = mysqli_fetch_assoc($query)){
@@ -192,8 +184,8 @@
       <nav id="nav">
         <ul class="pagination">
           <?php
-            $query = "SELECT * FROM dp_posts";
-            $seleciona = mysqli_query($link, $query);
+
+            $seleciona = $conn->DBQuery("SELECT * FROM dp_posts");
             $totalPosts = mysqli_num_rows($seleciona);
 
             $pags = ceil($totalPosts / $maximo);

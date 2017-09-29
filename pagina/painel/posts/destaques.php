@@ -12,10 +12,10 @@
     </tr>
 
 <?
-    $link   = DBConnect();
+    
     $query  = "SELECT * FROM dp_posts WHERE pin > 0";
-
-    $result = mysqli_query($link, $query);
+    $conn   = new Connection();
+    $result = $conn->DBQuery($query);
     $rows   = mysqli_num_rows($result);
 
     if($rows < 1) {
@@ -29,7 +29,7 @@
                   <td><img src=".'.$row['imagem'].'" height="50px" /></td>
                   <td>'.$row['data'].'</td>
                   <td>'.$row['hora'].'</td>            
-                  <td><input type="checkbox" checked onchange="destaquePost(`posts`,1,'.$row['id'].');"></td>
+                  <td><input type="checkbox" checked onchange="destaquePost(`posts_dtq`,0,'.$row['id'].');"></td>
                 </tr>';
 
       }
@@ -62,10 +62,8 @@
     </tr>
 
 <?
-    $link   = DBConnect();
-    $query  = "SELECT * FROM dp_posts WHERE pin = 0";
-
-    $result = mysqli_query($link, $query);
+    $query  = "SELECT * FROM dp_posts WHERE pin = 0";    
+    $result = $conn->DBQuery($query);
     $rows2   = mysqli_num_rows($result);
 
     if($rows2 < 1) {
@@ -80,7 +78,7 @@
                     <td><img src=".'.$row['imagem'].'" height="50px" /></td>
                     <td>'.$row['data'].'</td>
                     <td>'.$row['hora'].'</td>       
-                    <td><input type="checkbox" onchange="destaquePost(`posts`,2,'.$row['id'].');"></td>
+                    <td><input type="checkbox" onchange="destaquePost(`posts_dtq`,1,'.$row['id'].');"></td>
                   </tr>';
           }
 

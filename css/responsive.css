@@ -4,9 +4,7 @@
   bottom: 10vh;
 }
 
-#news {
-  height: 250px;
-}
+
 
 #news span {
   font-size: 1em;
@@ -62,26 +60,21 @@
   }
 
   #body-full-cultos {
-      width: 100%;
-      flex-wrap: wrap;
-      justify-content: center
+      width: 99%;      
+      grid-template-columns: 3fr 1fr;
   }
-
-  #cultos-full-posts {
-      width: 95%
-  }
-
-  #right-column {
-      width: 85%;
-      margin-bottom: 30px
-  }
-
-  .news-dropper {
-    width: 85%;
+    
+  .news-wall-grid-rightColumn {
+      grid-template-columns: 2fr 2fr;
   }
 }
 
 @media screen and (max-width:768px) {
+
+
+  #body-full-cultos {    
+    grid-template-columns: 3fr 2fr;
+  }
 
   .news-wall-grid-rightColumn {
     grid-template-columns: 1fr;
@@ -157,6 +150,11 @@
 }
 
 @media screen and (max-width:710px) {
+
+  #body-full-cultos {    
+    grid-template-columns: 1fr;
+  }
+
   #post-textos {
       padding: 0px 30px;
   }
@@ -212,6 +210,18 @@
 }
 
 @media screen and (max-width:680px) {
+
+  table {
+    width: 95%;
+  }
+
+  table th:nth-child(4),
+  table th:nth-child(2),
+  table td:nth-child(2),
+  table td:nth-child(4) {
+    display: none;
+  }
+
   #desenvolvedor img {
       width: 35%
   }
@@ -237,6 +247,10 @@
 }
 
 @media screen and (max-width:500px) {
+    .news-img-holder img {
+        width: 100%;
+        height: unset;
+    }
   #desenvolvedor img {
       width: 200px
   }
@@ -263,5 +277,8 @@
   .baixar h3,
   .ouvir h3 {
       color: #666
+  }
+  #news {
+    height: 250px;
   }
 }

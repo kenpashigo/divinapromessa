@@ -12,11 +12,12 @@
 
 html,
 body {
-    height: 100%;
+    min-height: 100%;
     background: #e0e0e0;
     -webkit-transition: all 300ms ease;
     -moz-transition: all 300ms ease;
     transition: all 300ms ease;
+    position: inherit;
 }
 
 * {
@@ -401,7 +402,6 @@ h3 {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    width: 100%;
     margin-bottom: 45px;
     background: #ffffff;
     border-radius: 4px;
@@ -466,8 +466,8 @@ h3 {
     -webkit-box-pack: start;
     -ms-flex-pack: start;
     justify-content: flex-start;
-    width: 100%;
-    height: 220px
+    /* width: 100%; */
+    height: 220px;
 }
 
 #ministerio {
@@ -633,7 +633,13 @@ h3 {
 }
 
 #desenvolvedor img {
-    width: 100%
+    height: 60%
+}
+
+#desenvolvedor a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .destaque {
@@ -874,7 +880,7 @@ h3 {
 }
 
 .news-img-holder {
-    width: 500px;
+    /* width: 500px; */
     height: 220px;
     margin-right: 15px;
     overflow: hidden;
@@ -899,16 +905,16 @@ h3 {
 
 .losangulo {
     background: #414141;
-    box-shadow: inset -3px -3px 4px 0px #212121;
+    box-shadow: inset -4px -4px 10px 0px #212121;
     width: 50px;
     height: 50px;
-    transform: rotate(45deg) translate(-30%, -40%);
+    transform: rotate(45deg) translate(-37%, -37%);
 }
 
 #lateral-menu {
     position: fixed;
     right: 0;
-    width: 75vw;
+    width: 100vw;
     height: 100%;
     background: #333;
     z-index: 99;
@@ -956,5 +962,3 @@ h3 {
 .lm-links a:nth-child(odd) {
     background: #2d2d2d;    
 }
-
-

@@ -12,10 +12,12 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link rel="icon" href="<?= HTTP ?>ico/divico.ico" type="image/x-icon" />
 	<title>Login</title>
 
-	<!-- Javascript -->
+	<!-- Javascript -->	
 	<script src="../js/login.js" type="text/javascript" charset="utf-8"></script>
+	
 
 	<!-- CSS -->
 	<link rel="stylesheet" href="../css/login.css">

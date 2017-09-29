@@ -18,7 +18,7 @@
         
         
         <label for="img_up" class="btn-upload" id="btn-upload">Escolha a imagem</label>        
-        <input type="file" name="imagem" onchange="upload_img();" id="img_up" />
+        <input type="file" name="imagem" onchange="upload_img('./uploads/');" id="img_up" />
 
         <div id="progress-data-send">
           <div id="loading"></div>      
@@ -57,7 +57,7 @@
   <textarea name="conteudo" class="form-input" id="conteudo"></textarea>
   <script>CKEDITOR.replace('conteudo');</script>  
 
-  <span id="enviar" onclick="query_add();">Enviar</span>
+  <span id="enviar" onclick="posts_add();">Enviar</span>
   
 
 

@@ -17,18 +17,16 @@
         } 
       ?>
     </tr>
-<?php
-
-  $link = DBConnect();
+<?php  
 
   if($editar == 0 ){
-    $query = "SELECT * FROM dp_posts ORDER BY id DESC";
-    $seleciona = mysqli_query($link, $query) or die(mysqli_error($link));
+    $query = "SELECT * FROM dp_posts ORDER BY id DESC";    
   } else {
-    $query = "SELECT * FROM dp_posts WHERE id = $editar";
-    $seleciona = mysqli_query($link, $query) or die(mysqli_error($link));
+    $query = "SELECT * FROM dp_posts WHERE id = $editar";    
   }
 
+  $conn = new Connection();
+  $seleciona = $conn->DBQuery($query);
   $conta = mysqli_num_rows($seleciona);
 
   if($conta <= 0) {
@@ -58,7 +56,7 @@
       <td><?= $row['hora'];                                   ?></td>
       <?php 
         if($editar == 0) {
-          echo '<td><span onclick="getPage(`posts/editar&editar='.$row['id'].'`);"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></span></td>';    
+          echo '<td><span onclick="getPage(`posts/editar`, '.$row['id'].');"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></span></td>';    
         } 
       ?>
 
@@ -80,7 +78,7 @@
         
         <label class="upload-file">Enviar imagem</label>        
         <label for="img_up" class="btn-upload" id="btn-upload">Escolha a imagem</label>        
-        <input type="file" name="imagem" onchange="upload_img();" id="img_up" />
+        <input type="file" name="imagem" onchange="upload_img(`./uploads/`);" id="img_up" />
 
         <div class="tamanho-imagem">
           <span class="tmh-img-size">Tamanho: </span>
@@ -125,6 +123,6 @@
     echo '<div id="texto-form"><p>Conteúdo da postagem</p></div>';
     echo '<textarea name="conteudo" class="form-input" id="conteudo">'.$conteudo.'</textarea>';
     echo '<script>CKEDITOR.replace("conteudo");</script>';    
-    echo '<span id="enviar" onclick="query_edit();">Enviar</span>';
+    echo '<span id="enviar" onclick="posts_edt();">Enviar</span>';
   }
   ?>

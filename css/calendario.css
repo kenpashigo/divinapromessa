@@ -373,3 +373,36 @@
     -ms-flex-line-pack: center;
     align-content: center;
 }
+
+#response {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    overflow: hidden;
+    border-radius: 7px;
+}
+
+table tr {
+    background: #B8B8B8;
+}
+
+table tr:nth-child(odd) {
+    background: #B0B0B0;
+}
+
+table th {
+    background: #03bfb7;
+    color: #fff;
+    padding: 14px 7px;
+}
+
+table td {    
+    padding: 10px 0;
+    text-align: center;
+}
+

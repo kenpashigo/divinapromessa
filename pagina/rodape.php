@@ -25,13 +25,13 @@
 
   			<div id="low">
   				<div id="register">
-  					<p>© 2016-2016 EnDivs Design | Kenpashi & Sufuria | <a href="<?= HTTP ?>admin"><span class="destaque">Versão 0.2 Λ</span></a>
+  					<p>© 2016-2016 EnDivs Design | <a href="<?= FACEBOOK ?>paulohsmarques" style="height: 100%;color: #03bfb7;">Kenpashi</a> & <a href="<?= FACEBOOK ?>prisciilamarques" style="height: 100%;color: #03bfb7;">Sufuria</a> | <span class="destaque">Versão 1.00 Λ</span>
   					<br>Todas as imagens de livros, noticias e etc são marcas registradas dos seus respectivos proprietários.</p>
   				</div>
 
   				<div id="desenvolvedor">
   					<p>Desenvolvido por:</p>
-  					<img src="<?= HTTP ?>img/desenveloper.png">
+  					<a href="<?= FACEBOOK ?>paulohsmarques" style="height: 100%;"><img src="<?= HTTP ?>img/desenveloper-colored.png"></a>
   				</div>
   			</div>
 

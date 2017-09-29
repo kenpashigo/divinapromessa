@@ -2,6 +2,8 @@
   ob_start("ob_gzhandler");
   require './system/config.php';
   require './system/conn.php';  
+  
+  $conn = new Connection();
 ?>
 
 <!DOCTYPE html>
@@ -29,106 +31,20 @@
 
     <div id="full-default">
       <div id="body-full">
-
-        <div id="church" style="background: url('./uploads/1280px-Stonehenge_back_wide.jpg'); background-size: cover; background-position: center"></div>
-
-        <div id="sobre-titulo">
-          <h2>Um pouco sobre nós</h2>
-          <h1>Igreja Divina Promessa</h1>
-          <h3>Desde 2005 - <?php date_default_timezone_set('America/Sao_Paulo'); $ano = date("Y"); echo $ano?></h3>
-        </div>
-
-        <div id="area-texto">
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-          consequat. <br />
-          Duis aute irure dolor in reprehenderit in voluptate velit esse
-          cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-          proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        </div>
-
-        <!-- ãsdo8901j90dlsa-dç=-;=-1d90sajd90as.dl0-e.e0-rnm90fl0-d,.0-fnrui924m0 -->
-
-        <div id="sobre-titulo">
-          <h2>Liderança</h2>          
-          <h1>Alcemir Mota</h1>
-          <h3>Pastor presidente</h3>
-        </div>
-
-        <div id="church" style="background: url('./uploads/1280px-Stonehenge_back_wide.jpg'); background-size: cover; background-position: center"></div>
-
-        <div id="area-texto">
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-          consequat. <br />
-          Duis aute irure dolor in reprehenderit in voluptate velit esse
-          cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-          proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        </div>
-
-        <!-- ãsdo8901j90dlsa-dç=-;=-1d90sajd90as.dl0-e.e0-rnm90fl0-d,.0-fnrui924m0 -->
-
-        <div id="sobre-titulo">
-          <h2>Banda</h2>          
-          <h1>Diogenes Sales </h1>
-          <h3>Lider</h3>
-        </div>
-
-        <div id="church" style="background: url('./uploads/1280px-Stonehenge_back_wide.jpg'); background-size: cover; background-position: center"></div>
-
-        <div id="area-texto">
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-          consequat. <br />
-          Duis aute irure dolor in reprehenderit in voluptate velit esse
-          cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-          proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        </div>
-
-        <!-- ãsdo8901j90dlsa-dç=-;=-1d90sajd90as.dl0-e.e0-rnm90fl0-d,.0-fnrui924m0 -->
-
-        <div id="sobre-titulo">
-          <h2>Adoração</h2>          
-          <h1>Grupo de louvor</h1>
-          <h3>Alessandra Mota, Debora Medeiros, Daiane Medeiros, Poliane Mota</h3>
-        </div>
-
-        <div id="church" style="background: url('./uploads/1280px-Stonehenge_back_wide.jpg'); background-size: cover; background-position: center"></div>
-
-        <div id="area-texto">
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-          consequat. <br />
-          Duis aute irure dolor in reprehenderit in voluptate velit esse
-          cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-          proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        </div>
-
-        <!-- ãsdo8901j90dlsa-dç=-;=-1d90sajd90as.dl0-e.e0-rnm90fl0-d,.0-fnrui924m0 -->
-
-        <div id="sobre-titulo">
-          <h2>Adoração</h2>          
-          <h1>Filhas da Divina Promessa</h1>
-          <h3>Lideres: Cinthia, Pastora Sonia, Nair Medeiros</h3>
-        </div>
-
-        <div id="church" style="background: url('./uploads/1280px-Stonehenge_back_wide.jpg'); background-size: cover; background-position: center"></div>
-
-        <div id="area-texto">
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-          consequat. <br />
-          Duis aute irure dolor in reprehenderit in voluptate velit esse
-          cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-          proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        </div>
-
-
+        <?          
+          $result   = $conn->DBQuery("SELECT * FROM dp_sobre ORDER BY ordem ASC");
+          while($row = mysqli_fetch_assoc($result)) {
+            echo '<div id="sobre-titulo">
+                    <h2>'.$row['hierarquia'].'</h2>          
+                    <h1>'.$row['nome'].'</h1>
+                    <h3>'.$row['integrantes'].'</h3>
+                  </div>
+  
+                  <div id="church" style="background: url('.$row['imagem'].'); background-size: cover; background-position: center"></div>
+  
+                  <div id="area-texto">'.$row['texto'].'</div>';
+          }
+        ?>
       </div>
     </div>
 

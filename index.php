@@ -2,9 +2,12 @@
   ob_start("ob_gzhandler");
   require './system/config.php';
   require './system/conn.php';  
+  require './system/tools.php';
+
+  $tools = new Tools();
+  $conn  = new Connection();
+
 ?>
-
-
 
 <!DOCTYPE html>
 <html>
@@ -19,13 +22,13 @@
   	<link rel="stylesheet" type="text/css" href="./css/default.css">
   	    
   </head>
+  
+  <? require './pagina/lm_controler.php'; ?>
+
   <body>
 
-  <?php 
-    $link  = DBConnect();
-    $query = "SELECT * FROM dp_slider";
-
-    $select = mysqli_query($link, $query);    
+  <?php        
+    $select = $conn->DBQuery("SELECT * FROM dp_slider");     
     $rows   = mysqli_num_rows($select);
   ?>
 
@@ -62,8 +65,8 @@
     }
   </script>
 
-  <? require './pagina/lm_controler.php';
-     require './pagina/header.php';   ?>
+  
+  <? require './pagina/header.php';   ?>
 
     <style>
       #holder-banner {
@@ -90,12 +93,8 @@
     <!-- Body -->
     <section id="top3news">
       <div id="max-width-body" class="grid-top3news">
-        <?php
-          if(isset($_GET['pagina'])){
-            $do = ($_GET['pagina']);
-          } else {
-            $do = "inicio";
-          }
+        <?php  
+          $do = $_GET['pagina'] ?? "inicio";          
 
           if(file_exists("pagina/".$do.".php")){
             include("pagina/".$do.".php");

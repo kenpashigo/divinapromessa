@@ -1,7 +1,5 @@
 <?php         
-$link   = DBConnect();
-$query  = "SELECT * FROM dp_ensinamentos WHERE pin > 0 ORDER BY pin ASC LIMIT 3";
-$result = mysqli_query($link, $query);
+$result  = $conn->DBQuery("SELECT * FROM dp_ensinamentos WHERE pin > 0 ORDER BY pin ASC LIMIT 3");
 if($result != null) { $rows = mysqli_num_rows($result); } else { $rows = 0; }
 
 if($rows > 0) {

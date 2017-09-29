@@ -1,31 +1,40 @@
-<?php
-  $link = DBConnect();
-  $seleciona = mysqli_query($link, "SELECT * FROM dp_posts") or die(mysqli_error($link));
+<?php  
+  $conn = new Connection();
+  $seleciona = $conn->DBQuery("SELECT * FROM dp_posts");
   $qtde_posts = mysqli_num_rows($seleciona);
 
-  $seleciona = mysqli_query($link, "SELECT * FROM dp_agenda") or die(mysqli_error($link));
+  $seleciona = $conn->DBQuery("SELECT * FROM dp_agenda");
   $qtde_agenda = mysqli_num_rows($seleciona);
 
-  $query = mysqli_query($link, "SELECT * FROM dp_cultos");
+  $query = $conn->DBQuery("SELECT * FROM dp_cultos");
   $qtde_cultos = mysqli_num_rows($query);
 
-  $query = mysqli_query($link, "SELECT * FROM dp_contatos");
+  $query = $conn->DBQuery("SELECT * FROM dp_contatos");
   $qtde_contatos = mysqli_num_rows($query);
 ?>
 
-<div id="resumo-holder">
-  <div id="total-posts"><p>Posts</p></div>
-  <div id="total-pedidos"><p>Agenda</p></div>
-  <div id="total-acessos"><p>Cultos</p></div>
-  <div id="total-eventos"><p>Orações</p></div>
-</div>
+<section id="contador">  
+  <div id="total-posts">
+    <span class="cont-titulo">Posts</span>
+    <span class="cont-quanti"><?= $qtde_posts ?></span>
+  </div>      
 
-<div id="resumo-holder">
-  <div id="total-posts"><p>  <?= $qtde_posts    ?></p></div>
-  <div id="total-pedidos"><p><?= $qtde_agenda   ?></p></div>
-  <div id="total-acessos"><p><?= $qtde_cultos   ?></p></div>
-  <div id="total-eventos"><p><?= $qtde_contatos ?></p></div>
-</div>
+  <div id="total-posts">
+    <span class="cont-titulo">Agenda</span>
+    <span class="cont-quanti"><?= $qtde_agenda ?></span>
+  </div>      
+
+  <div id="total-posts">
+    <span class="cont-titulo">Cultos</span>
+    <span class="cont-quanti"><?= $qtde_cultos ?></span>
+  </div>      
+
+  <div id="total-posts">
+    <span class="cont-titulo">Contatos</span>
+    <span class="cont-quanti"><?= $qtde_contatos ?></span>
+  </div>      
+</section>
+
 
 <label for="recentes-posts-holder" id="posts-label">Últimos posts registrados</label>
 <div id="recentes-posts-holder">
@@ -40,9 +49,8 @@
         <th>IMAGEM</th>
       </tr>
     
-    <?php
-      $link = DBConnect();
-      $seleciona = mysqli_query($link, "SELECT * FROM dp_posts ORDER BY id DESC LIMIT 5") or die(mysqli_error($link));
+    <?php      
+      $seleciona = $conn->DBQuery("SELECT * FROM dp_posts ORDER BY id DESC LIMIT 5");
       $conta = mysqli_num_rows($seleciona);
 
       if($conta <= 0) {
@@ -71,9 +79,8 @@
         <th>TITULO</th>        
       </tr>
     
-    <?php
-      $link = DBConnect();
-      $seleciona = mysqli_query($link, "SELECT * FROM dp_cultos ORDER BY id DESC LIMIT 5") or die(mysqli_error($link));
+    <?php      
+      $seleciona = $conn->DBQuery("SELECT * FROM dp_cultos ORDER BY id DESC LIMIT 5");
       $conta = mysqli_num_rows($seleciona);
 
       if($conta <= 0) {
@@ -101,9 +108,8 @@
         <th>TITULO</th>        
       </tr>
     
-    <?php
-      $link = DBConnect();
-      $seleciona = mysqli_query($link, "SELECT * FROM dp_ensinamentos ORDER BY id DESC LIMIT 5") or die(mysqli_error($link));
+    <?php      
+      $seleciona = $conn->DBQuery("SELECT * FROM dp_ensinamentos ORDER BY id DESC LIMIT 5");
       $conta = mysqli_num_rows($seleciona);
 
       if($conta <= 0) {
@@ -133,8 +139,7 @@
       </tr>
     
     <?php
-      $link = DBConnect();
-      $seleciona = mysqli_query($link, "SELECT * FROM dp_agenda ORDER BY id DESC LIMIT 5") or die(mysqli_error($link));
+      $seleciona = $conn->DBQuery("SELECT * FROM dp_agenda ORDER BY id DESC LIMIT 5");
       $conta = mysqli_num_rows($seleciona);
 
       if($conta <= 0) {
@@ -164,9 +169,8 @@
         <th>DATA</th>
       </tr>
     
-    <?php
-      $link = DBConnect();
-      $seleciona = mysqli_query($link, "SELECT * FROM dp_contatos ORDER BY id DESC LIMIT 5") or die(mysqli_error($link));
+    <?php      
+      $seleciona = $conn->DBQuery("SELECT * FROM dp_contatos ORDER BY id DESC LIMIT 5");
       $conta = mysqli_num_rows($seleciona);
 
       if($conta <= 0) {
@@ -197,9 +201,8 @@
         <th>LEGENDA</th>    
       </tr>
     
-    <?php
-      $link = DBConnect();
-      $seleciona = mysqli_query($link, "SELECT * FROM dp_slider ORDER BY id DESC LIMIT 5") or die(mysqli_error($link));
+    <?php      
+      $seleciona = $conn->DBQuery("SELECT * FROM dp_slider ORDER BY id DESC LIMIT 5");
       $conta = mysqli_num_rows($seleciona);
 
       if($conta <= 0) {

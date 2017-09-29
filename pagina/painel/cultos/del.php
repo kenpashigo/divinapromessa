@@ -16,14 +16,15 @@
       ?>
     </tr>
 
-<?php
-  $link = DBConnect();
+<?php  
   if($excluir == 0 ){
-    $seleciona = mysqli_query($link, "SELECT * FROM dp_cultos ORDER BY id DESC") or die(mysqli_error($link));
+    $query = "SELECT * FROM dp_cultos ORDER BY id DESC";
   } else {
-    $seleciona = mysqli_query($link, "SELECT * FROM dp_cultos WHERE id = $excluir") or die(mysqli_error($link));
+    $query = "SELECT * FROM dp_cultos WHERE id = $excluir";
   }
 
+  $conn = new Connection;
+  $seleciona = $conn->DBQuery($query);
   $conta = mysqli_num_rows($seleciona);
 
   if($conta <= 0) {    
@@ -46,7 +47,7 @@
       <?php 
         if($excluir == 0) {
           echo '<td>
-                  <span onclick="getPage(`cultos/del&excluir='.$row['id'].'`);">
+                  <span onclick="getPage(`cultos/del`, '.$row['id'].');">
                     <span class="glyphicon glyphicon-trash" aria-hidden="true">
                     </span>
                   </span>

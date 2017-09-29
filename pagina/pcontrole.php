@@ -1,35 +1,32 @@
 <?php  
   require '../system/config.php';
-  require '../system/conn.php';  
-?>
-
-<?php
+  require '../system/conn.php';   
+  $conn = new Connection();
   
-  $link = DBConnect();
   session_start();   
 
-  $user_key = $_SESSION['key-user'] ?? "";
+  $user_key = $_SESSION['key-user'] ?? "";    
   
   if(!empty($user_key)){
 
-    $query  = "SELECT * FROM dp_users WHERE usuario = '$user_key'";
-    $result = mysqli_query($link, $query);
-    $rows   = mysqli_num_rows($result);
+    $result  = $conn->DBQuery("SELECT * FROM dp_users WHERE usuario = '$user_key'");    
+    $rows   = mysqli_num_rows($result);    
 
     if($rows == 0) {
-      header( "refresh:0;url=./acesso.php" );
+      header( "refresh:0;url=".HTTP."admin" );
     } else {
-      $rows = mysqli_fetch_assoc($result);
+      $row = mysqli_fetch_assoc($result);
 
-      if($rows['ativo'] == 0) {
-        header( "refresh:0;url=./acesso.php" );
+      if($row['ativo'] == 0) {
+        header( "refresh:0;url=".HTTP."admin" );
       } else {
         $userName   = $user_key;
-        $userFuncao = $rows['funcao'];        
+        $userFuncao = $row['funcao'];    
+        $img        = $row['img_perfil'];
       }
     }
   } else {
-    header( "refresh:0;url=./acesso.php" );
+    header( "refresh:0;url=".HTTP."admin" );
   }
 
 ?>
@@ -41,7 +38,7 @@
   	<meta name="viewport" content="width=device-width, maximum-scale=1.0">
   	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
   	<title>Administração</title>
-  	<link rel="icon" href="./ico/favicon.ico" type="image/x-icon" />
+  	<link rel="icon" href="<?= HTTP ?>ico/divico.ico" type="image/x-icon" />
   	<link rel="stylesheet" type="text/css" href="../css/painel_de_controle.css">
   	<link rel="stylesheet" type="text/css" href="../css/responsive.css" media="screen and (max-width: 1024px)">
     <link rel="stylesheet" type="text/css" href="../css/bootstrap-glyphicons.css">
@@ -49,6 +46,14 @@
     <script type="text/javascript" src="../js/painelcontrole.js"></script>    
   </head>
   <body>
+
+    <!-- Loader -->
+
+    <div id="loader">
+      <div class="sidder-left">IN</div>
+      <div class="sidder-right">DIVS</div>      
+    </div>
+
 
     <!-- Header -->
 
@@ -100,7 +105,7 @@
           
           <div id="user-img">
             <div id="user-img-container">
-              <img src="../img/user.jpg" />
+              <img src="<?= $img ?>" />
             </div>
           </div>
 
@@ -120,10 +125,8 @@
 
         <?php
 
-          $link   = DBConnect();
-          $query  = "SELECT * FROM dp_cpmenu ORDER BY id ASC";
-
-          $result = mysqli_query($link, $query);
+          
+          $result  = $conn->DBQuery("SELECT * FROM dp_cpmenu ORDER BY id ASC");
           $rows   = mysqli_num_rows($result);
 
           if($rows < 1) {
@@ -146,9 +149,7 @@
           <div class="sub">
             
             <?php
-              $query2  = "SELECT * FROM dp_cpmenu_sub WHERE origem = '$id' ORDER BY ordem ASC";        
-
-              $result2 = mysqli_query($link, $query2);
+              $result2  = $conn->DBQuery("SELECT * FROM dp_cpmenu_sub WHERE origem = '$id' ORDER BY ordem ASC");        
               $rows2   = mysqli_num_rows($result2);
 
               if($rows2 < 1) {
@@ -158,7 +159,7 @@
             ?>    
 
               <span onclick="getPage(<?= $row2['getPage'] ?>);">
-                <div id="holder-barra">
+                <div id="holder-barra" class="hover-sub-categoria">
                   <span class="glyphicon <?= $row2['titulo_icon'] ?>" aria-hidden="true"></span>
                   <p class="link"><?= $row2['titulo'] ?></p>
                 </div>

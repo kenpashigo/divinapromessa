@@ -2,6 +2,11 @@
   ob_start("ob_gzhandler");
   require './system/config.php';
   require './system/conn.php';  
+  require './system/tools.php';  
+
+  $conn  = new Connection();
+  $tools = new Tools();
+
 ?>
 
 <!DOCTYPE html>
@@ -21,9 +26,9 @@
   <body>
 
   <? require './pagina/lm_controler.php';
-     require './pagina/header.php';   ?>
+     require './pagina/header.php';   ?>  
 
-  </div><br><br><br><br><br><br>  
+    <br /><br /><br /><br />
 
     <div id="full-default">
       <div id="body-full">
@@ -31,7 +36,7 @@
         <div id="con-holder">
           <div id="con-info">
             <div id="con-img-info">
-              <img src="./ico/church.png">
+              <img src="<?= HTTP ?>ico/church.png">
             </div>
 
             <div id="con-titulo">
@@ -46,33 +51,33 @@
           <div id="contato-form">
             <div id="formulario">
           <?php
-          
-          $link = DBConnect();
 
           if(isset($_POST['enviar']) && $_POST['enviar'] == "send"){
 
             $nome = $_POST['nome'];
-            $nome = mysqli_real_escape_string($link, $nome);
+            $nome = $tools->DBEscape($link, $nome);
             if(empty($nome)) { $nome = 'anônimo'; }            
 
             $sobrenome = $_POST['sobrenome'];
-            $sobrenome = mysqli_real_escape_string($link, $sobrenome);
+            $sobrenome = $tools->DBEscape($link, $sobrenome);
             if($nome == 'anônimo' && empty($sobrenome)) { $sobrenome = 'anônimo'; }
 
             $email = $_POST['email'];
-            $email = mysqli_real_escape_string($link, $email);
+            $email = $tools->DBEscape($link, $email);
 
             $motivo = $_POST['motivo'];            
-            $motivo = mysqli_real_escape_string($link, $motivo);            
+            $motivo = $tools->DBEscape($link, $motivo);            
           
             $pedido = $_POST['pedido'];
-            $pedido = mysqli_real_escape_string($link, $pedido);            
+            $pedido = $tools->DBEscape($link, $pedido);            
 
             date_default_timezone_set('America/Sao_Paulo');
             $data = date("d/m/Y");
             $hora = date("H:i:s");            
 
             $query = "INSERT INTO dp_contatos (nome, sobrenome, email, motivo, pedido, data, hora) VALUES ('$nome', '$sobrenome', '$email', '$motivo', '$pedido', '$data', '$hora')";
+
+            print_r($query);
 
             //Inserção de dados no banco            
 
@@ -83,7 +88,7 @@
             }elseif(empty($pedido)){
               echo '<div id="alert-container"><img src="./ico/warning.png" alt="hora-do-post" width="45px" height="45px" height="auto" style="margin-right: 15px" /><p class="alert">Descreva o seu pedido/oração/opinião</p></div>';
             }else {              
-              if(mysqli_query($link, $query)){
+              if($conn->DBQuery($query)){
                 echo '<div id="alert-container"><img src="./ico/success.png" alt="hora-do-post" width="45px" height="45px" height="auto" style="margin-right: 15px" /><p id="sucess">Informações enviadas com sucesso!</p></div>';
                 unset($_POST);
               } else {

@@ -7,8 +7,8 @@
     <div class="lm-hamburger"><img src="<?= HTTP ?>/ico/hamburger.png" width="50px" /></div>
   </div>
   <div class="lm-links">
-    <?php 
-      $resultado = retorna_query("SELECT * FROM dp_links ORDER BY ordem ASC");
+    <?php       
+      $resultado = $conn->DBQuery("SELECT * FROM dp_links ORDER BY ordem ASC");
       while($row = mysqli_fetch_assoc($resultado)) {
         echo '<a href="'.HTTP.''.$row['link'].'">'.$row['titulo'].'</a>';
       }
@@ -31,7 +31,7 @@
 
       <?php 
 
-        $resultado = retorna_query("SELECT * FROM dp_links ORDER BY ordem ASC");
+        $resultado = $conn->DBQuery("SELECT * FROM dp_links ORDER BY ordem ASC");
         while($row = mysqli_fetch_assoc($resultado)) {
           echo '<div class="link"><a href="'.HTTP.''.$row['link'].'">'.$row['titulo'].'</a></div>';
         }

@@ -1,10 +1,7 @@
 <?php 
-	$editar = $_GET['editar'] ?? 0;
 
-	$link  = DBConnect();
-	$query = "SELECT * FROM dp_slider WHERE id = '$editar'";
-
-	$result = mysqli_query($link, $query);
+	$conn   = new Connection();
+	$result = $conn->DBQuery("SELECT * FROM dp_slider WHERE id = '$editar'");	
 	$rows   = mysqli_num_rows($result);
 
 	$row = mysqli_fetch_assoc($result);	
@@ -32,7 +29,7 @@
       
       
       <label for="img_up" class="btn-upload" id="btn-upload">Escolha a imagem</label>        
-      <input type="file" name="imagem" onchange="upload_slide();" id="img_up" />
+      <input type="file" name="imagem" onchange="upload_img('./sliders/');" id="img_up" />
 
       <div id="progress-data-send">
         <div id="loading"></div>      
@@ -61,5 +58,5 @@
 <div id="texto-form"><p>Legenda</p></div>
   <input type="text" name="legenda" class="form-input" placeholder="Legenda do slide" id="txt_legenda" value="<?= $row['legenda']; ?>"/>
 
-<span id="enviar" onclick="editarSlider_query(<?= $row['id']; ?>);">Editar slide</span>
+<span id="enviar" onclick="editarSlide(<?= $row['id']; ?>);">Editar slide</span>
 

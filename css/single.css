@@ -527,12 +527,12 @@ input[type=range]::-ms-track {
 }
 
 #body-full-cultos {
-	width: 1000px;		
-	display: flex;	
+	width: 1000px;
+	display: grid;
+	grid-template-columns: 3fr 1fr;	
 }
 
-#cultos-full-posts {
-	width: 70%;	
+#cultos-full-posts {	
 	display: flex;
 	justify-content: center;
 	flex-wrap: wrap;	
@@ -571,19 +571,6 @@ input[type=range]::-ms-track {
 	width: 90%;
 }
 
-#right-column {
-	width: 30%;
-	margin: 0 5px 30px 5px;
-
-}
-
 #quemsomos {
 	margin: 30px 0;
-}
-
-#quemsomos h3, #quemsomos p {
-	padding: 0 10px;
-	margin-bottom: 15px;
-	color: #666;	
-	text-align: right;	
 }

@@ -37,7 +37,7 @@
 }
 
 #con-img-info img {
-	width: 100%;
+	width: 75%;
 }
 
 #con-titulo {
@@ -95,7 +95,7 @@
 }
 
 #formulario input, textarea, select {
-	color: #333;
+	color: #FFFFFF;
 	border-radius: 5px;
     border: 0px solid #9dc5a6;
 }
@@ -147,7 +147,7 @@
     color: #fff;
     border: 0;
     border-radius: 3px;
-    background: #25ae88;
+    background: #03bfb7;
 }
 
 #enviar:hover
@@ -155,7 +155,7 @@
     text-decoration: none;
 
     color: #fff;
-    background: #11eaae;
+    background: #03bfb7;
 }
 
 .form-class
@@ -263,7 +263,7 @@
     color: #fff;
     border: 0;
     border-radius: 5px;
-    background: #25ae88;
+    background: #03bfb7;
 
     -webkit-box-pack: center;
     -ms-flex-pack: center;

@@ -21,17 +21,18 @@
   } else {
     while($row = mysqli_fetch_assoc($seleciona)){
 
-      $id = $row['id'];
+      $id       = $row['id'];
       $pregador = $row['pregador'];
-      $data = $row['data'];
-      $titulo = $row['titulo'];
-      $resumo = $row['resumo'];      
+      $imagem   = $row['imagem'];
+      $data     = $row['data'];
+      $titulo   = $row['titulo'];
+      $resumo   = $row['resumo'];      
       $conteudo = $row['conteudo'];
-      $tags = '.'.$row['tags'];
-      $low = $row['low'];
-      $med = $row['medium'];
-      $hig = $row['high'];
-      $zip = $row['zip'];
+      $tags     = '.'.$row['tags'];
+      $low      = $row['low'];
+      $med      = $row['medium'];
+      $hig      = $row['high'];
+      $zip      = $row['zip'];
 
       if($low == "" || $low == null) { $low = 'nada'; }
       if($med == "" || $med == null) { $med = 'nada'; }
@@ -110,7 +111,7 @@
 
 <div id="full-default">
   <div id=body-full>
-    <div id="single-posts-cultos" style="background:  linear-gradient(transparent, rgba(0, 0, 0, 0.9) 70%), url('../img/pregadores/<?=$pregador?>.jpg'); background-size: cover; background-repeat: no-repeat;">
+    <div id="single-posts-cultos" style="background:  linear-gradient(transparent, rgba(0, 0, 0, 0.9) 70%), url('../uploads/cultos/<?=$imagem?>'); background-size: cover; background-repeat: no-repeat;">
       <div id="descricao">
         
         <div id="categoria">
@@ -151,22 +152,89 @@
 
   
 
-   <div id="right-column">      
-
-      <div id="quemsomos">
-        <h3>Quem somos</h3>
-
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-      </div>      
-
-      <br /><br />
-    </div>  
-  </div>
+   <div id="right-column">
+   
+         <?php
+   
+         date_default_timezone_set('America/Sao_Paulo');
+         $ddd = date("d")-1; if($ddd<10){$ddd='0'.$ddd;}    
+         $mmm = date("m");      
+   
+         $query  = "SELECT * FROM dp_agenda WHERE mes = '$mmm' AND dia > '$ddd' ORDER BY mes ASC, dia ASC LIMIT 2";    
+         $query = mysqli_query($link, $query);
+         $qtde= mysqli_num_rows($query);    
+   
+         if($qtde > 0) {
+           while($result = mysqli_fetch_assoc($query)){
+   
+             $dia = $result['dia'];
+             $mes = $result['mes'];
+             $ano = $result['ano'];
+             $categoria = $result['categoria'];            
+             $titulo = $result['titulo'];
+   
+             echo '<div id="agenda">
+                     <span class="title-right-columns">Próximo evento</span>
+                     <div class="titulo-evento">
+                       <p>'.$categoria.'</p>
+                     </div>
+   
+                     <div class="content-evento">
+                       <p><span class="gray">'.$dia.'/'.$mes.'/'.$ano.'</span><br />'.$titulo.'</p>
+                   </div>
+                 </div>';
+   
+             
+           }    
+         } else {    
+           
+           $query = "SELECT * FROM dp_agenda WHERE mes > '$mmm' ORDER BY mes ASC, dia ASC LIMIT 2";
+           $query = mysqli_query($link, $query);
+           $result= mysqli_num_rows($query);
+   
+           while($result = mysqli_fetch_assoc($query)){
+             $dia = $result['dia'];
+             $mes = $result['mes'];
+             $ano = $result['ano'];
+             $categoria = $result['categoria'];            
+             $titulo = $result['titulo'];
+   
+             echo '<div id="agenda">
+                     <span class="title-right-columns">Próximo evento</span>
+                     <div class="titulo-evento">
+                       <p>'.$categoria.'</p>
+                     </div>
+   
+                     <div class="content-evento">
+                       <p><span class="gray">'.$dia.'/'.$mes.'/'.$ano.'</span><br />'.$titulo.'</p>
+                     </div>
+                   </div>';
+           }
+         }
+   
+   
+   
+         ?>
+           
+           <div id="quemsomos">
+             <h3 class="title-right-columns">Quem somos</h3>
+   
+             <br /><br />
+             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+             tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+             quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+             consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+             cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+             proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+           </div>    
+   
+           <!--<div id="img-sector">            
+           </div>-->
+   
+         </div>
+       </div> 
+     </div>
+   </div>
 </div>
 
 <!-- Rodapé  -->

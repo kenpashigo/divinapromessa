@@ -2,6 +2,8 @@
   ob_start("ob_gzhandler");
   require './system/config.php';
   require './system/conn.php';  
+
+  $conn = new Connection();
 ?>
 
 <!DOCTYPE html>

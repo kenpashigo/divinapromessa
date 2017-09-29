@@ -2,6 +2,8 @@
   ob_start("ob_gzhandler");
   require './system/config.php';
   require './system/conn.php';  
+
+  $conn = new Connection();
 ?>
 
 <!DOCTYPE html>
@@ -68,19 +70,11 @@
       <div id="body-full">
         <div id="eventos">
           <div id="eventos-titulo"><h2>Próximos eventos</h2></div>
-            <div class="eventos-data">
-              <div id="dia"><p>DIA</p></div>
-              <div id="dia"><p>MES</p></div>
-              <div id="mater"><p>CATEGORIA</p></div>
-              <div id="mater"><p>TITULO</p></div>
-              <div id="descricao"><p>DATA E HORARIO</p></div>
-            </div>
-
-            <div id="response">
-            </div>
+          <div id="response"></div>
         </div>
       </div>
     </div>
+    
 
 
 

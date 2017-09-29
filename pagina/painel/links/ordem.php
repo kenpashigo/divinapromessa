@@ -12,10 +12,9 @@
 
 <?php 
 
-	$link    = DBConnect();	
-	$query = "SELECT * FROM dp_links";
-
-	$retorno = mysqli_query($link, $query);
+  $query   = "SELECT * FROM dp_links";
+  $conn    = new Connection();
+	$retorno = $conn->DBQuery($query);
 	$rows    = mysqli_num_rows($retorno);
 
 	if($rows < 1) {

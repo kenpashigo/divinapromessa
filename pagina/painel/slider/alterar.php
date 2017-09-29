@@ -21,10 +21,8 @@
   </tr>
 
   <?php
-    $link = DBConnect();
-    $query = "SELECT * FROM dp_slider ORDER BY id ASC";
-
-    $select = mysqli_query($link, $query);
+    $conn = new Connection();
+    $select = $conn->DBQuery("SELECT * FROM dp_slider ORDER BY id ASC");
     $rows   = mysqli_num_rows($select);
 
     if($rows < 1) {
@@ -39,7 +37,7 @@
     <td><img src=".<?= $row['link']; ?>" width="100px"></td>
     <td><?= $row['descricao']; ?></td>
     <td><?= $row['legenda']; ?></td>
-  	<td><span onclick="getPage('slider/editar&editar=<?= $row['id']; ?>')"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></span></td>
+  	<td><span onclick="getPage('slider/editar', <?= $row['id']; ?>)"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></span></td>
   	<td><span onclick="deletarSlide(`<?= $row['id'].'`, `'.$row['link']; ?>`);"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></span></td>
   </tr>
 

@@ -11,10 +11,9 @@
     </tr>
 
 <?
-    $link   = DBConnect();
     $query  = "SELECT * FROM dp_cultos WHERE pin > 0";
-
-    $result = mysqli_query($link, $query);
+    $conn   = new Connection();
+    $result = $conn->DBQuery($query);
     $rows   = mysqli_num_rows($result);
 
     if($rows < 1) {
@@ -27,7 +26,7 @@
                   <td>'.$row['titulo'].'</td>                                    
                   <td>'.$row['resumo'].'</td>
                   <td>'.$row['data'].'</td>            
-                  <td><input type="checkbox" checked onchange="destaquePost(`cultos`, 1,'.$row['id'].');"></td>
+                  <td><input type="checkbox" checked onchange="destaquePost(`culto_dtq`, 0,'.$row['id'].');"></td>
                 </tr>';
 
       }
@@ -42,7 +41,7 @@
 <div id="add-holder">
   <div class="simple-button">
     <span class="glyphicon glyphicon-certificate" aria-hidden="true"></span>
-    <label>Total: <?= $rows; ?></label>
+    <label>Total: <?= ($rows == 3 ? "MAX" : $rows); ?></label>
   </div>
 </div>
 
@@ -59,10 +58,8 @@
     </tr>
 
 <?
-    $link   = DBConnect();
     $query  = "SELECT * FROM dp_cultos WHERE pin = 0";
-
-    $result = mysqli_query($link, $query);
+    $result = $conn->DBQuery($query);
     $rows2   = mysqli_num_rows($result);
 
     if($rows2 < 1) {
@@ -76,7 +73,7 @@
                     <td>'.$row['titulo'].'</td>                                    
                     <td>'.$row['resumo'].'</td>
                     <td>'.$row['data'].'</td>      
-                    <td><input type="checkbox" onchange="destaquePost(`cultos`, 2,'.$row['id'].');"></td>
+                    <td><input type="checkbox" onchange="destaquePost(`culto_dtq`, 1,'.$row['id'].');"></td>
                   </tr>';
           }
 
