@@ -1,0 +1,274 @@
+#body-full {
+  width: 1000px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 0px;
+}
+
+#full-default:nth-child(2) #body-full {
+    margin-top: 100px;
+}
+
+
+#con-holder {
+	width: 1000px;	
+	display: flex;
+}
+
+#con-info {
+	width: 25%;	
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	flex-direction: column;
+	flex-wrap: wrap;
+
+}
+
+#con-img-info {
+	margin-bottom: 10px;
+	width: 100%;
+	height: 200px;	
+	display: flex;
+	justify-content: center;
+	align-items: center;
+    border-radius: 15px;    
+}
+
+#con-img-info img {
+	width: 100%;
+}
+
+#con-titulo {
+	width: 100%;	
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 19px;
+	font-weight: 900;
+	text-align: center;
+	margin: 10px 0;
+	text-transform: uppercase;
+	border-radius: 5px;
+}
+
+#con-titulo p {
+	padding: 7px;
+}
+
+#con-texto {
+	width: 100%;
+	margin: 10px 0;
+	text-align: center;
+}
+
+#con-texto p {
+    color: #666;
+}
+
+
+#mapa {
+	width: 100%;
+    height: 300px;
+    margin-bottom: 15px;
+    font-size: 20px;
+    text-align: center;
+}
+
+#mapa p {
+	color: #3ed162;	
+}
+
+#contato-form {	
+	width: 75%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#formulario {
+	width: 90%;
+  background: #f3f3f3;
+  border: 1px solid #d1d1d1;
+	border-radius: 10px;
+}
+
+#formulario input, textarea, select {
+	color: #333;
+	border-radius: 5px;
+    border: 0px solid #9dc5a6;
+}
+
+#texto-form {
+    width: 85%;
+}
+
+#texto-form p {
+    font-size: 18px;
+    font-weight: 800;
+    color: #03bfb7;    
+}
+
+.form-input,
+.form-select {
+    font-size: 17px;
+    width: 80%;
+    margin: 15px;
+    margin-top: 2px;
+    padding: 15px;
+}
+
+.form-select {    
+    width: 85%;    
+    color: #999;
+}
+
+.form-select * {
+	color: #333;
+}
+
+.form-input:nth-child(3)
+{
+    min-height: 150px;
+}
+
+#enviar
+{
+    font-size: 20px;
+
+    margin-top: 30px;
+    padding: 10px 20px 10px 20px;
+
+    -webkit-transition: all 200ms;
+            transition: all 200ms;
+    text-decoration: none;
+
+    color: #fff;
+    border: 0;
+    border-radius: 3px;
+    background: #25ae88;
+}
+
+#enviar:hover
+{
+    text-decoration: none;
+
+    color: #fff;
+    background: #11eaae;
+}
+
+.form-class
+{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+
+    margin: 25px 0;    
+
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+}
+
+#alert-container
+{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+
+    width: 100%;
+    margin-top: 45px;
+
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+.alert
+{
+    font-size: 20px;
+    font-weight: 700;
+
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+
+    width: 65%;
+    padding: 10px;
+
+    text-align: center;
+    text-transform: uppercase;
+
+    color: #302f2f;
+    border: 0;
+    border-radius: 5px;
+    background: #efce4a;
+
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+.erro
+{
+    font-size: 20px;
+    font-weight: 700;
+
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+
+    width: 65%;
+    padding: 10px;
+
+    text-align: center;
+    text-transform: uppercase;
+
+    color: #fff;
+    border: 0;
+    border-radius: 5px;
+    background: #d75a4a;
+
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+#sucess
+{
+    font-size: 20px;
+    font-weight: 700;
+
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+
+    width: 65%;
+    padding: 10px;
+
+    text-transform: uppercase;
+
+    color: #fff;
+    border: 0;
+    border-radius: 5px;
+    background: #25ae88;
+
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}

@@ -1,0 +1,267 @@
+
+
+.legenda-banner {
+  bottom: 10vh;
+}
+
+#news {
+  height: 250px;
+}
+
+#news span {
+  font-size: 1em;
+}
+
+#max-width-body {
+  width: 95%;
+}
+
+@media screen and (max-width:999px) {
+
+  #full-default {
+    flex-wrap: wrap;
+  } 
+
+  #header-holder {
+    width: 100%;
+    border-radius: 0
+  }
+
+  #body-full {
+    width: 99%
+  }
+
+  .img-100 img {
+      width: auto;
+      height: 100%
+  }
+
+  #close {
+      display: none
+  }
+
+  .volume {
+      display: none
+  }
+
+  #player-title {
+      width: 45%
+  }
+
+  #stade {
+      width: 45%;
+      margin-right: 30px
+  }
+
+  #player-holder {
+      width: 100%
+  }
+
+  #tempo-restante {
+      display: none
+  }
+
+  #body-full-cultos {
+      width: 100%;
+      flex-wrap: wrap;
+      justify-content: center
+  }
+
+  #cultos-full-posts {
+      width: 95%
+  }
+
+  #right-column {
+      width: 85%;
+      margin-bottom: 30px
+  }
+
+  .news-dropper {
+    width: 85%;
+  }
+}
+
+@media screen and (max-width:768px) {
+
+  .news-wall-grid-rightColumn {
+    grid-template-columns: 1fr;
+  }
+  
+  .news-img-holder {
+      width: 100%;
+      margin: 0;
+  }
+  #news:nth-child(2),
+  #news:nth-child(3) {
+      width: 100%
+  }
+  #full-default:nth-child(3) {
+      flex-wrap: wrap
+  }
+  #body-full-posts {
+      width: 95%
+  }
+  #con-holder {
+      flex-wrap: wrap;
+      justify-content: center
+  }
+  #con-info {
+      width: 95%;
+      margin-bottom: 15px
+  }
+  #contato-form {
+      width: 100%
+  }
+  #full-default #body-full #full-default:nth-child(2) #body-full {
+      margin: 20px 0
+  }
+  #full-default #body-full #full-default:nth-child(2) #body-full h2 {
+      padding-left: 20px;
+      color: #666
+  }
+  #full-default:nth-child(3) #body-full {
+      margin-bottom: 5px
+  }
+  #full-default:nth-child(4) #body-full {
+      margin-top: 70px
+  }
+  #eventos {
+      margin: 0
+  }
+  #eventos-titulo h2 {
+      padding: 0
+  }
+  #culto-post {
+      height: auto
+  }
+  #cultos-label {
+      height: auto
+  }
+  #cultos-label,
+  #player {
+      width: 100%
+  }
+  .ouvir,
+  .baixar {
+      margin: 0
+  }
+  #single-posts-cultos {
+      flex-wrap: wrap
+  }
+  #descricao {
+      width: 100%
+  }
+  #player {
+      margin: 0 15px 20px 15px
+  }
+}
+
+@media screen and (max-width:710px) {
+  #post-textos {
+      padding: 0px 30px;
+  }
+  #posts-holder {
+      flex-wrap: wrap
+  }
+  #post-imagem {
+      width: 100%;
+      margin: 0
+  }
+  #links-header {
+      display: none
+  }
+  #links-responsive {
+      display: flex
+  }
+}
+
+#title-holder {
+  width: 100%
+}
+
+#hamburger {
+  display: flex
+}
+
+#menu-holder {
+  display: none
+}
+
+@media screen and (max-width:1023px) {
+  #desenvolvedor {
+      width: 100%;
+      margin: 30px 0
+  }
+  #desenvolvedor p {
+      text-align: center
+  }
+  #desenvolvedor img {
+      width: 30%
+  }
+  #links-uteis {
+      margin-bottom: 30px
+  }
+  #register {
+      width: 100%;
+      text-align: center
+  }
+  #low {
+      flex-flow: column-reverse;
+      flex-wrap: wrap
+  }
+}
+
+@media screen and (max-width:680px) {
+  #desenvolvedor img {
+      width: 35%
+  }
+  #logo {
+      width: 60px;
+      display: flex;
+      justify-content: center;
+      align-items: center
+  }
+  #logo img {
+      width: 100px
+  }
+  #links-uteis,
+  #logos-marcas,
+  #register {
+      width: 100%;
+      margin-bottom: 15px
+  }
+  #footer-holder,
+  #register {
+      height: auto
+  }
+}
+
+@media screen and (max-width:500px) {
+  #desenvolvedor img {
+      width: 200px
+  }
+  #cultos-holder {
+      width: 100%
+  }
+  #single-posts-cultos {
+      overflow: visible
+  }
+  #descricao {
+      flex-direction: row
+  }
+  #body-full-cultos {
+      margin-top: 370px
+  }
+  #single-posts-cultos #descricao {
+      margin-top: 450px
+  }
+  #titulo *,
+  #resumo *,
+  #lown,
+  #medi,
+  #high,
+  .baixar h3,
+  .ouvir h3 {
+      color: #666
+  }
+}

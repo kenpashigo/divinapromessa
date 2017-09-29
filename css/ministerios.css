@@ -1,0 +1,84 @@
+* {
+	user-select: none;
+}
+
+#holder-fully {
+	width: 100%;
+	height: 600px;	
+	margin-top: 64px;
+	display: flex;
+	justify-content: center;			
+}
+
+#body-fully {
+	width: 100%;
+	height: 100%;	
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: column;
+	align-items: flex-start;
+}
+
+#nav-holder {
+	width: 100%;
+	height: 60px;	
+	display: flex;
+	justify-content: space-between;	
+	flex-wrap: wrap;
+	background: #097f7a;
+	position: relative;
+}
+
+.opt {
+	width: 33.2%;
+	height: 100%;	
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 16px;
+	z-index: 2;
+}
+
+#selector-opt {
+	width: 33.2%;
+	height: 100%;
+	background: rgba(3, 191, 183, 0.46);
+	transition: all 1s;
+	z-index: 1;	
+	position: absolute;
+}
+
+.opt:hover {
+	background: #c9d14e;
+}
+
+#loading {
+	width: 100%;
+	height: 7px;
+	background: #c8c2c2;
+	position: relative;
+}
+
+#loaded {
+	width: 0%;
+	height: 100%;
+	background: #d5dd58;
+	position: absolute;	
+}
+
+#img-ministerio {
+	width: 100%;
+	height: 533px;		
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	overflow: hidden;	
+}
+
+#img-ministerio img {	
+	height: 100%;
+}
+
+#banner::after {
+	content: '- MINISTÉRIOS -';
+}

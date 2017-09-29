@@ -1,0 +1,58 @@
+#body-full {
+  width: 1000px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 0px;
+}
+
+#full-default:nth-child(2) #body-full {
+    margin-top: 100px;
+}
+
+#church {
+	width: 800px;
+	height: 350px;	
+	border-radius: 15px;
+	overflow: hidden;
+	margin-top: 5px;	
+}
+
+#sobre-titulo {
+	background: #03b1a9;
+	width: 800px;	
+	margin-top: 15px;
+	border-radius: 7px;
+}
+
+#sobre-titulo h2 {
+	margin-top: 10px;
+	font-size: 18px;
+	color: #333;
+}
+
+#sobre-titulo h3 {
+	margin-bottom: 10px;
+	font-size: 14px;
+	margin-top: 5px;
+}
+
+#sobre-titulo * {
+	padding: 0 15px;
+}
+
+#area-texto {
+	width: 800px;
+	margin-top: 5px;
+	background: rgba(255, 255, 255, 0.1);
+	border-radius: 5px;
+}
+
+#area-texto * {
+	padding: 15px;
+	color: #666;
+	font-size: 18px;
+	letter-spacing: 0.5px;
+	text-align: center;
+}
+

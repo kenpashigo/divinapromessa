@@ -1,0 +1,7 @@
+user-agent:*
+disallow: /audios
+disallow: /img
+disallow: /system
+disallow: /pagina
+disallow: /ico
+sitemap: http://divinapromessa.16mb.com/sitemap.xml

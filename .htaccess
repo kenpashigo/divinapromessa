@@ -1,0 +1,6 @@
+Options -Indexes
+
+RewriteEngine on
+RewriteRule ^admin/?$ /pagina/acesso.php [NC]
+RewriteRule ^cpanel/?$ /pagina/pcontrole.php [NC]
+RewriteRule ^home/?$ index.php [NC,L]
