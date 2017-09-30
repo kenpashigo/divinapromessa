@@ -11,7 +11,7 @@ class Image extends Connection {
   private function image_upload() {
     $tools = new Tools();
     $uploaddir = $_REQUEST['filePath'];
-    $uploadfile = $uploaddir.basename($tools->getRandom());      
+    $uploadfile = $uploaddir.basename($tools->getRandom());  
     $tools->uploadImg($uploaddir, $uploadfile);
   }
 }

@@ -26,7 +26,7 @@ class Slide extends Connection {
     $query = "UPDATE 
                 dp_slider 
               SET 
-                link='$dados[2]',
+                link='./sliders/$dados[2]',
                 descricao='$dados[3]',
                 legenda='$dados[4]'
               WHERE 

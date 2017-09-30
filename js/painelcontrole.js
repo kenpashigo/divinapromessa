@@ -294,11 +294,12 @@ function getPage(pagename, id) {
 
 function addSlide() {
   var funct     = "slide_add";
-  var img       = "./sliders/"+_("p-text").innerText;
+  var img       = _("img_up").value;
   var descricao = _("txt_descricao").value;
   var legenda   = _("txt_legenda").value;
+  img = img.split("\\");    
 
-  var data = funct+"¬"+img+"¬"+descricao+"¬"+legenda;  
+  var data = funct+"¬"+img[2]+"¬"+descricao+"¬"+legenda;
 
   var postData = new FormData();
   postData.append('postData', data);
@@ -328,12 +329,12 @@ function addSlide() {
 
 function editarSlide(id) {
   var funct     = "slide_edt";
-  if(_("p-text").innerText == "teste.jpg")  { var img = ""; }
-  else                                      { var img = "./sliders/"+_("p-text").innerText; }
+  var link      = _("img-sctn").src;
   var descricao = _("txt_descricao").value;
-  var legenda   = _("txt_legenda").value;  
+  var legenda   = _("txt_legenda").value;
+  link          = link.split("http://divinapromessa.16mb.com/sliders/");
 
-  var data = funct+"¬"+id+"¬"+img+"¬"+descricao+"¬"+legenda;
+  var data = funct+"¬"+id+"¬"+link[1]+"¬"+descricao+"¬"+legenda;
 
   var postData = new FormData();
   postData.append('postData', data);
@@ -922,7 +923,8 @@ function upload_img (path) {
     _("tmh-img-size").innerHTML = size+" mb";    
     postContent.append("postData", data);
     postContent.append("filePath", path);
-    postContent.append("postFile", file);        
+    postContent.append("postFile", file);    
+
     
     ajax.upload.addEventListener("progress", progressHandler, false);
     ajax.addEventListener("load", completado, false);
@@ -946,7 +948,6 @@ function upload_img (path) {
     function completado(event) {            
 
       var resposta = JSON.parse(event.target.responseText);
-            
       if(resposta.resultado == "true") {    
         toasters('info', 'Upload', 'imagem enviada');    
         

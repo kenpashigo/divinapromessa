@@ -1,20 +1,17 @@
 <?php
   require '../system/config.php';
   require '../system/conn.php';
+  require '../system/tools.php';
+
+  $tools  = new Tools();
+  $conn   = new Connection();
 ?>
 
 <?php
-
-
-  if(isset($_GET['post'])){
-    $pg = (int)$_GET['post'];
-  } else {
-    $pg = 1;
-  }
-
-  $link = DBConnect();
-  $seleciona = mysqli_query($link, "SELECT * FROM dp_cultos WHERE id = '$pg'") or die(mysqli_error($link));
-  $conta = mysqli_num_rows($seleciona);
+  
+  $pg = $_GET['post'] ?? 1;
+  $seleciona  = $conn->DBQuery("SELECT * FROM dp_cultos WHERE id = '$pg'");
+  $conta      = mysqli_num_rows($seleciona);
 
   if($conta <= 0) {
     echo '<span class="pagina-404">Nada encontrado!</span>';
@@ -49,11 +46,11 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, maximum-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta property="og:url" content="<?= url(); ?>" />
+    <meta property="og:url" content="<?= $tools->url(); ?>" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="<?=$titulo?>" />
     <meta property="og:description" content="<?=$resumo?>" />
-    <meta property="og:image" content="<?=pastor($pregador);?>" />
+    <meta property="og:image" content="<?= $tools->pastor($pregador);?>" />
 
     <title><?=$titulo?></title>
     <link rel="icon" href="../ico/favicon.ico" type="image/x-icon" />
@@ -160,8 +157,7 @@
          $ddd = date("d")-1; if($ddd<10){$ddd='0'.$ddd;}    
          $mmm = date("m");      
    
-         $query  = "SELECT * FROM dp_agenda WHERE mes = '$mmm' AND dia > '$ddd' ORDER BY mes ASC, dia ASC LIMIT 2";    
-         $query = mysqli_query($link, $query);
+         $query = $conn->DBQuery("SELECT * FROM dp_agenda WHERE mes = '$mmm' AND dia > '$ddd' ORDER BY mes ASC, dia ASC LIMIT 2");
          $qtde= mysqli_num_rows($query);    
    
          if($qtde > 0) {
@@ -186,29 +182,28 @@
    
              
            }    
-         } else {    
-           
-           $query = "SELECT * FROM dp_agenda WHERE mes > '$mmm' ORDER BY mes ASC, dia ASC LIMIT 2";
-           $query = mysqli_query($link, $query);
-           $result= mysqli_num_rows($query);
-   
-           while($result = mysqli_fetch_assoc($query)){
-             $dia = $result['dia'];
-             $mes = $result['mes'];
-             $ano = $result['ano'];
-             $categoria = $result['categoria'];            
-             $titulo = $result['titulo'];
-   
-             echo '<div id="agenda">
-                     <span class="title-right-columns">Próximo evento</span>
-                     <div class="titulo-evento">
-                       <p>'.$categoria.'</p>
-                     </div>
-   
-                     <div class="content-evento">
-                       <p><span class="gray">'.$dia.'/'.$mes.'/'.$ano.'</span><br />'.$titulo.'</p>
-                     </div>
-                   </div>';
+         } else {
+
+          $query = $conn->DBQuery("SELECT * FROM dp_agenda WHERE mes > '$mmm' ORDER BY mes ASC, dia ASC LIMIT 2");           
+          $result= mysqli_num_rows($query);
+  
+          while($result = mysqli_fetch_assoc($query)){
+            $dia = $result['dia'];
+            $mes = $result['mes'];
+            $ano = $result['ano'];
+            $categoria = $result['categoria'];            
+            $titulo = $result['titulo'];
+  
+            echo '<div id="agenda">
+                    <span class="title-right-columns">Próximo evento</span>
+                    <div class="titulo-evento">
+                      <p>'.$categoria.'</p>
+                    </div>
+  
+                    <div class="content-evento">
+                      <p><span class="gray">'.$dia.'/'.$mes.'/'.$ano.'</span><br />'.$titulo.'</p>
+                    </div>
+                  </div>';
            }
          }
    
