@@ -21,7 +21,7 @@
         
         
         <label for="img_up" class="btn-upload" id="btn-upload">Escolha a imagem</label>        
-        <input type="file" name="imagem" onchange="upload_img_culto();" id="img_up" />
+        <input type="file" name="imagem" onchange="upload_img('./uploads/sobre/');" id="img_up" />
 
         <div id="progress-data-send">
           <div id="loading"></div>      

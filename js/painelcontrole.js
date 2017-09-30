@@ -827,6 +827,29 @@ function sobre_edt(id) {
   }
 }
 
+function sobre_del(id) {
+  var ajax      = new XMLHttpRequest();
+  var postData  = new FormData();
+
+  var data      = "sobre_del¬"+id;
+
+  postData.append("postData", data);
+
+  ajax.addEventListener("load", sobre_del_response, false);
+  ajax.open("POST", "../system/controller.php?time="+Math.random(), true);
+  ajax.send(postData);
+
+  function sobre_del_response(e) {
+    var res = e.target.responseText;
+    if(res == "true") {
+      getPage("sobre/del", 0);
+      toasters("sucess", "Deletar", "Descrição Excluída");
+    } else {
+      toasters("error", "Deletar", "An internal error ocurred. file.js");
+    }
+  }
+}
+
 //USUÁRIO
 
 function usuario_add() {
@@ -900,6 +923,29 @@ function usuario_editar(id) {
       toasters("erro", "Usuário", "Erro interno");
     }
 
+  }
+}
+
+function usuario_del(id) {
+  var ajax      = new XMLHttpRequest();
+  var postData  = new FormData();
+
+  var data      = "users_del¬"+id;
+
+  postData.append("postData", data);
+
+  ajax.addEventListener("load", users_del_response, false);
+  ajax.open("POST", "../system/controller.php?time="+Math.random(), true);
+  ajax.send(postData);
+
+  function users_del_response(e) {
+    var res = e.target.responseText;
+    if(res == "true") {
+      getPage("usuario/del", 0);
+      toasters("sucess", "Deletar", "Usuário Excluído");
+    } else {
+      toasters("error", "Deletar", "An internal error ocurred. file.js");
+    }
   }
 }
 

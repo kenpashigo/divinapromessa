@@ -7,7 +7,7 @@ class Sobre extends Connection {
     switch($dados[0]) {
       case "sobre_add": return($this->sobre_add($dados)); break;
       case "sobre_edt": return($this->sobre_edt($dados)); break;
-      //case "sobre_del": return($this->sobre_del($dados)); break;      
+      case "sobre_del": return($this->sobre_del($dados)); break;      
     }
   }
 
@@ -49,5 +49,10 @@ class Sobre extends Connection {
                 id            = '$dados[7]'";
 
     $tools->runQuery($query);    
+  }
+
+  private function sobre_del($dados) {
+    $tools = new Tools();
+    $tools->runQuery("DELETE FROM dp_sobre WHERE id = '$dados[1]'");
   }
 }

@@ -7,9 +7,9 @@
       <th>ID</th>
       <th>CATEGORIA</th>
       <th>TITULO</th>
-      <th>DESCRICAO</th>
+      <th>DESCRIÇÃO</th>
       <th>DATA</th>
-      <?php if($editar == 0) { echo '<th>Edit</th>'; } ?>
+      <?php if($editar == 0) { echo '<th>EDITAR</th>'; } ?>
     </tr>
 
 <?php

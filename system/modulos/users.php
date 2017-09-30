@@ -7,6 +7,7 @@ class Users extends Connection {
     switch($dados[0]) {
       case "users_add": return($this->users_add($dados)); break;
       case "users_edt": return($this->users_edt($dados)); break;      
+      case "users_del": return($this->users_del($dados)); break;      
     }
   }
 
@@ -48,4 +49,8 @@ class Users extends Connection {
     $tools->runQuery($query);
   }
 
+  private function users_del($dados) {
+    $tools = new Tools();
+    $tools->runQuery("DELETE FROM dp_users WHERE id = '$dados[1]'");
+  }
 }

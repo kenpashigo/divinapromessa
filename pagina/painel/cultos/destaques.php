@@ -11,7 +11,7 @@
     </tr>
 
 <?
-    $query  = "SELECT * FROM dp_cultos WHERE pin > 0";
+    $query  = "SELECT * FROM dp_cultos WHERE pin > 0 ORDER BY id DESC";
     $conn   = new Connection();
     $result = $conn->DBQuery($query);
     $rows   = mysqli_num_rows($result);
@@ -58,7 +58,7 @@
     </tr>
 
 <?
-    $query  = "SELECT * FROM dp_cultos WHERE pin = 0";
+    $query  = "SELECT * FROM dp_cultos WHERE pin = 0 ORDER BY id DESC";
     $result = $conn->DBQuery($query);
     $rows2   = mysqli_num_rows($result);
 

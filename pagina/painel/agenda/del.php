@@ -7,7 +7,7 @@
     <th>ID</th>
     <th>CATEGORIA</th>
     <th>TITULO</th>
-    <th>DESCRI</th>
+    <th>DESCRIÇÃO</th>
     <th>DATA</th>
     <?php 
       if($excluir == 0) {
