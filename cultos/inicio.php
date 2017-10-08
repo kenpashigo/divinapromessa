@@ -10,11 +10,13 @@
       $titulo = $row['titulo'];
       $imagem = $row['imagem'];
 
-      echo '<div id="news">              
-              <h2>'.$pregador.'</h2>
-              <span>'.$titulo.'</span>
-              <img src="'.HTTP.'uploads/cultos/'.$imagem.'" alt="">
-            </div>';
+      echo '<a href="./cultos/post.php?post='.$id.'">
+              <div id="news">              
+                <h2>'.$pregador.'</h2>
+                <span>'.$titulo.'</span>
+                <img src="'.HTTP.'uploads/cultos/'.$imagem.'" alt="">
+              </div>
+            </a>';
     }
   } 
 
