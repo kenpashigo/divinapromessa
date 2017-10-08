@@ -530,7 +530,10 @@ input[type=range]::-ms-track {
 	width: 1000px;
 	display: grid;
 	grid-template-columns: 3fr 1fr;	
+<<<<<<< HEAD
 	margin-top: 50px;
+=======
+>>>>>>> 28089fd... new configs files (edited)
 }
 
 #cultos-full-posts {	

@@ -297,7 +297,6 @@ function addSlide() {
   var img       = _("img_up").value;
   var descricao = _("txt_descricao").value;
   var legenda   = _("txt_legenda").value;
-  img = img.split("\\");    
 
   var data = funct+"¬"+img[2]+"¬"+descricao+"¬"+legenda;
 
@@ -888,6 +887,7 @@ function usuario_add() {
 
       toasters("erro", "Cadastro", "Erro interno");      
     }
+
   }
 }
 
@@ -970,7 +970,6 @@ function upload_img (path) {
     postContent.append("postData", data);
     postContent.append("filePath", path);
     postContent.append("postFile", file);    
-
     
     ajax.upload.addEventListener("progress", progressHandler, false);
     ajax.addEventListener("load", completado, false);

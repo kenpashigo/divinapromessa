@@ -155,8 +155,8 @@
    
          date_default_timezone_set('America/Sao_Paulo');
          $ddd = date("d")-1; if($ddd<10){$ddd='0'.$ddd;}    
-         $mmm = date("m");      
-   
+         $mmm = date("m");         
+
          $query = $conn->DBQuery("SELECT * FROM dp_agenda WHERE mes = '$mmm' AND dia > '$ddd' ORDER BY mes ASC, dia ASC LIMIT 2");
          $qtde= mysqli_num_rows($query);    
    
@@ -182,6 +182,7 @@
    
              
            }    
+<<<<<<< HEAD
          } else {
 
           $query = $conn->DBQuery("SELECT * FROM dp_agenda WHERE mes > '$mmm' ORDER BY mes ASC, dia ASC LIMIT 2");           
@@ -204,6 +205,31 @@
                       <p><span class="gray">'.$dia.'/'.$mes.'/'.$ano.'</span><br />'.$titulo.'</p>
                     </div>
                   </div>';
+=======
+         } else {    
+           
+           $query = "SELECT * FROM dp_agenda WHERE mes > '$mmm' ORDER BY mes ASC, dia ASC LIMIT 2";
+           $query = mysqli_query($link, $query);
+           $result= mysqli_num_rows($query);
+   
+           while($result = mysqli_fetch_assoc($query)){
+             $dia = $result['dia'];
+             $mes = $result['mes'];
+             $ano = $result['ano'];
+             $categoria = $result['categoria'];            
+             $titulo = $result['titulo'];
+   
+             echo '<div id="agenda">
+                     <span class="title-right-columns">Próximo evento</span>
+                     <div class="titulo-evento">
+                       <p>'.$categoria.'</p>
+                     </div>
+   
+                     <div class="content-evento">
+                       <p><span class="gray">'.$dia.'/'.$mes.'/'.$ano.'</span><br />'.$titulo.'</p>
+                     </div>
+                   </div>';
+>>>>>>> 28089fd... new configs files (edited)
            }
          }
    
