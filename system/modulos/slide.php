@@ -26,11 +26,7 @@ class Slide extends Connection {
     $query = "UPDATE 
                 dp_slider 
               SET 
-<<<<<<< HEAD
                 link='./sliders/$dados[2]',
-=======
-                link='$dados[2]',
->>>>>>> 28089fd... new configs files (edited)
                 descricao='$dados[3]',
                 legenda='$dados[4]'
               WHERE 

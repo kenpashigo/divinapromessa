@@ -11,11 +11,7 @@ class Image extends Connection {
   private function image_upload() {
     $tools = new Tools();
     $uploaddir = $_REQUEST['filePath'];
-<<<<<<< HEAD
     $uploadfile = $uploaddir.basename($tools->getRandom());  
-=======
-    $uploadfile = $uploaddir.basename($tools->getRandom());      
->>>>>>> 28089fd... new configs files (edited)
     $tools->uploadImg($uploaddir, $uploadfile);
   }
 }

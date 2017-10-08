@@ -7,11 +7,7 @@
     <th>ID</th>
     <th>CATEGORIA</th>
     <th>TITULO</th>
-<<<<<<< HEAD
     <th>DESCRIÇÃO</th>
-=======
-    <th>DESCRI</th>
->>>>>>> 28089fd... new configs files (edited)
     <th>DATA</th>
     <?php 
       if($excluir == 0) {
