@@ -50,12 +50,9 @@ class Sobre extends Connection {
 
     $tools->runQuery($query);    
   }
-<<<<<<< HEAD
 
   private function sobre_del($dados) {
     $tools = new Tools();
     $tools->runQuery("DELETE FROM dp_sobre WHERE id = '$dados[1]'");
   }
-=======
->>>>>>> 28089fd... new configs files (edited)
 }
