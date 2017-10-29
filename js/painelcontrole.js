@@ -997,6 +997,7 @@ function upload_img (path) {
         toasters('info', 'Upload', 'imagem enviada');    
         
         var size = ((resposta.tamanho/Math.pow(2, 20)).toFixed(3));
+        console.log(size);
         size = size.split('0,');    
         _("tmh-img-size-2").innerHTML = size+" kb";
         _("btn-upload").innerHTML = "Reenviar?";

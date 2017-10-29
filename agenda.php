@@ -75,9 +75,6 @@
       </div>
     </div>
     
-
-
-
 <?php 
   require_once './pagina/rodape.php';
   ob_flush();

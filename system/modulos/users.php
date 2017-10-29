@@ -49,11 +49,8 @@ class Users extends Connection {
     $tools->runQuery($query);
   }
 
-<<<<<<< HEAD
   private function users_del($dados) {
     $tools = new Tools();
     $tools->runQuery("DELETE FROM dp_users WHERE id = '$dados[1]'");
   }
-=======
->>>>>>> 28089fd... new configs files (edited)
 }
